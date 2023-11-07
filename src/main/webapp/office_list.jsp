@@ -13,7 +13,7 @@
 <div class="container" style="margin-top: 100px;">
     <h1>Office List ::</h1>
     <div class="d-flex flex-row justify-content-between">
-        <nav aria-label="breadcrumb">
+        <nav class="my-auto" aria-label="breadcrumb">
             <ol class="breadcrumb my-auto">
                 <li class="breadcrumb-item active" aria-current="page">Office
                     List
