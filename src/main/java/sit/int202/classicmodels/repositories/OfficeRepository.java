@@ -86,4 +86,14 @@ public class OfficeRepository {
         em.getTransaction().commit();
         return true;
     }
+
+    public Integer getNextId() {
+        TypedQuery<String> query = getEntityManager().createNamedQuery(
+            "Office.findMaxId", String.class);
+        String maxOfficeCode = query.getSingleResult();
+        if (maxOfficeCode == null || maxOfficeCode.isEmpty()) {
+            return 1;
+        }
+        return Integer.parseInt(maxOfficeCode) + 1;
+    }
 }

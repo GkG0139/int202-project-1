@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 @Getter
@@ -15,6 +16,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "offices")
 @NamedQuery(name = "Office.findAll", query = "SELECT o FROM Office o")
+@NamedQuery(name = "Office.findMaxId", query = "SELECT MAX(o.officeCode) FROM Office o")
+@ToString
 public class Office {
 
     @Id
