@@ -17,6 +17,7 @@ import lombok.ToString;
 @Table(name = "offices")
 @NamedQuery(name = "Office.findAll", query = "SELECT o FROM Office o")
 @NamedQuery(name = "Office.findMaxId", query = "SELECT MAX(o.officeCode) FROM Office o")
+@NamedQuery(name = "Office.findByCityOrCountry", query = "SELECT o FROM Office o WHERE lower(o.city) LIKE :city OR lower(o.country) LIKE :country")
 @ToString
 public class Office {
 

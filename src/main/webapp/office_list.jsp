@@ -20,11 +20,44 @@
                 </li>
             </ol>
         </nav>
-        <a class="btn btn-primary"
+        <a class="btn btn-outline-primary"
            href="${pageContext.request.contextPath}/add-office" role="button">
             <i class="bi bi-plus-circle"></i> Add Office</a>
     </div>
     <hr>
+    <div class="card mb-5">
+        <div class="card-body">
+            <h5>Search ::</h5>
+            <form class="row mb-1"
+                  action="${pageContext.request.contextPath}/office-list"
+                  method="get">
+                <div class="col-8">
+                    <input class="form-control" type="text" name="searchText"
+                           placeholder="Search by City or Country"/>
+                </div>
+                <div class="col-4">
+                    <select class="form-select" name="searchSelect">
+                        <option selected value="">Select City</option>
+                        <c:forEach var="entry" items="${countryToCities}">
+                            <optgroup label="${entry.key}">
+                                <c:forEach var="city" items="${entry.value}">
+                                    <option value="${entry.key}|${city}">${city}</option>
+                                </c:forEach>
+                            </optgroup>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="col-12 mt-3 text-end">
+                    <button class="btn btn-outline-dark"
+                            style="margin-right: 8px" type="reset">Reset
+                    </button>
+                    <button href="#" class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="row">
         <c:forEach var="office" items="${offices}">
             <div class="col-3 mb-4">

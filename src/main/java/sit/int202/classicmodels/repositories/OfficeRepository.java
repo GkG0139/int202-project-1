@@ -96,4 +96,13 @@ public class OfficeRepository {
         }
         return Integer.parseInt(maxOfficeCode) + 1;
     }
+
+    public List<Office> findByCityOrCountry(String cityOrCountry) {
+        cityOrCountry = cityOrCountry.toLowerCase() + "%";
+        TypedQuery<Office> query = getEntityManager().createNamedQuery(
+            "Office.findByCityOrCountry", Office.class);
+        query.setParameter("city", cityOrCountry);
+        query.setParameter("country", cityOrCountry);
+        return query.getResultList();
+    }
 }
