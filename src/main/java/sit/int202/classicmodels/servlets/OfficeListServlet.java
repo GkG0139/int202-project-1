@@ -36,11 +36,15 @@ public class OfficeListServlet extends HttpServlet {
     private void filterOfficesBySearchText(HttpServletRequest req,
         List<Office> offices, OfficeRepository repository) {
         String searchText = req.getParameter("searchText");
-        if (searchText != null && !searchText.isEmpty()) {
-            List<Office> filteredOffices = repository.findByCityOrCountry(
-                searchText);
-            offices.removeIf(filteredOffices::contains);
+
+        if (searchText == null || searchText.isEmpty()) {
+            return;
         }
+
+        List<Office> filteredOffices = repository.findByCityOrCountry(
+            searchText);
+        offices.clear();
+        offices.addAll(filteredOffices);
     }
 
     private void filterOfficesBySearchSelect(
@@ -48,13 +52,15 @@ public class OfficeListServlet extends HttpServlet {
         List<Office> offices
     ) {
         String searchSelect = req.getParameter("searchSelect");
-        if (searchSelect != null && !searchSelect.isEmpty()) {
-            String[] parts = searchSelect.split("\\|");
-            String country = parts[0];
-            String city = parts[1];
-            offices.removeIf(office -> !office.getCountry().equals(country)
-                || !office.getCity().equals(city));
+        if (searchSelect == null || searchSelect.isEmpty()) {
+            return;
         }
+
+        String[] parts = searchSelect.split("\\|");
+        String country = parts[0];
+        String city = parts[1];
+        offices.removeIf(office -> !office.getCountry().equals(country)
+            || !office.getCity().equals(city));
     }
 
     private Map<String, Set<String>> generateCountryToCitiesMap(

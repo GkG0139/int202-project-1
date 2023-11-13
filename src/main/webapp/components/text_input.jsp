@@ -4,8 +4,10 @@
        type="${empty param.type ? 'text' : param.type}"
        name="${param.name}"
        id="${param.id}"
+       value="${empty param.value ? '' : param.value}"
 ${param.required == 'true' ? 'required' : ''}>
-<c:if test="${param.required  == 'true'}">
+
+<c:if test="${param.required == 'true'}">
     <div id="${param.id}Required" class="form-text">
         *Required
     </div>

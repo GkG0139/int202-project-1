@@ -12,14 +12,19 @@
 
 <div class="container" style="margin-top: 100px;">
     <h1>Office ${office.city}, ${office.country} ::</h1>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/office-list">Office
-                List</a></li>
-            <li class="breadcrumb-item active"
-                aria-current="page">Office ${office.city}, ${office.country}</li>
-        </ol>
-    </nav>
+    <div class="d-flex flex-row justify-content-between">
+        <nav class="my-auto" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/office-list">Office
+                    List</a></li>
+                <li class="breadcrumb-item active"
+                    aria-current="page">Office ${office.city}, ${office.country}</li>
+            </ol>
+        </nav>
+        <a class="btn btn-outline-primary"
+           href="${pageContext.request.contextPath}/edit-office?code=${office.officeCode}" role="button">
+            <i class="bi bi-pen"></i> Edit Office</a>
+    </div>
     <hr>
 
     <div class="row">

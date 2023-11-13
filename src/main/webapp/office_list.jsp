@@ -101,7 +101,7 @@
 <c:choose>
     <c:when test="${param.status == 'ERROR'}">
         <jsp:include page="components/toast.jsp">
-            <jsp:param name="status" value="error"/>
+            <jsp:param name="status" value="danger"/>
             <jsp:param name="message" value="${param.message}"/>
         </jsp:include>
     </c:when>
